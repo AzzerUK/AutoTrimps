@@ -38,13 +38,6 @@ function autoGoldenUpgradesAT() {
         //buy one upgrade per loop.
         buyGoldenUpgrade(setting);
         
-        // Swap between void and helium as a test for Helium per hour
-        if (setting == "Void") {
-            document.getElementById('AutoGoldenUpgrades').value = "Helium"; 
-        } else if (setting == "Helium") {
-            document.getElementById('AutoGoldenUpgrades').value = "Void"; 
-        }
-        
         // DZUGAVILI MOD - SMART VOID GUs
         // Assumption: buyGoldenUpgrades is not an asynchronous operation and resolves completely in function execution.
         if (setting == "Void") { // we can only buy a few void GUs. We should check if we actually made the buy.
