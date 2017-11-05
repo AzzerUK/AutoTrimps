@@ -2,7 +2,7 @@ MODULES["equipment"] = {};
 //These can be changed (in the console) if you know what you're doing:
 MODULES["equipment"].numHitsSurvived = 20;   //survive X hits in D stance or not enough Health, default 10
 MODULES["equipment"].numHitsSurvivedScry = 160;  // default 80
-MODULES["equipment"].enoughDamageCutoff = 4; //above this the game will buy attack equipment
+MODULES["equipment"].enoughDamageCutoff = 2; //above this the game will buy attack equipment
 
 var equipmentList = {
     'Dagger': {
