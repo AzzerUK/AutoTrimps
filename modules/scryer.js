@@ -55,7 +55,7 @@ function useScryerStance() {
 
 //Any of these being true will indicate scryer should not be used, and cause the function to dump back to regular autoStance():
     //check for spire
-    use_auto = use_auto || !game.global.mapsActive && game.global.world == 200 && game.global.spireActive && getPageSetting('ScryerUseinSpire2')!=1;
+    use_auto = use_auto || !game.global.mapsActive && game.global.world >= getPageSetting('IgnoreSpiresUntil') && (game.global.world == 200 || game.global.world == 300 || game.global.world == 400 || game.global.world == 500 || game.global.world == 600) && game.global.spireActive && getPageSetting('ScryerUseinSpire2')!=1;
     //check for voids
     use_auto = use_auto || game.global.mapsActive && getCurrentMapObject().location == "Void" && !getPageSetting('ScryerUseinVoidMaps2');
     //check for maps
