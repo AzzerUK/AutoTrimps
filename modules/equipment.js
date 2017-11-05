@@ -2,7 +2,7 @@ MODULES["equipment"] = {};
 //These can be changed (in the console) if you know what you're doing:
 MODULES["equipment"].numHitsSurvived = 20;   //survive X hits in D stance or not enough Health, default 10
 MODULES["equipment"].numHitsSurvivedScry = 160;  // default 80
-MODULES["equipment"].enoughDamageCutoff = 2; //above this the game will buy attack equipment
+MODULES["equipment"].enoughDamageCutoff = 4; //above this the game will buy attack equipment default 4
 
 var equipmentList = {
     'Dagger': {
@@ -189,6 +189,12 @@ function evaluateEquipmentEfficiency(equipName) {
         Factor = 0;
         Wall = true;
     }
+    // Max cap 10 before our initial spire-goal
+    if (gameResource.level >= 10 && game.global.world < getPageSetting('IgnoreSpiresUntil')) {
+        Factor = 0;
+        Wall = true;
+    }
+    // Don't go above our main equipment cap
     if (getPageSetting('CapEquip2') > 0 && gameResource.level >= getPageSetting('CapEquip2')) {
         Factor = 0;
         Wall = true;
@@ -380,7 +386,7 @@ function autoLevelEquipment() {
                 document.getElementById(eqName).style.border = '2px solid red';
             }
             //If we're considering an attack item, we want to buy weapons if we don't have enough damage, or if we don't need health (so we default to buying some damage)
-            if (getPageSetting('BuyWeapons') && DaThing.Stat == 'attack' && !enoughDamageE) {
+            if (getPageSetting('BuyWeapons') && DaThing.Stat == 'attack' && (!enoughDamageE || enoughHealthE)) {
                 if (DaThing.Equip && !Best[stat].Wall && canAffordBuilding(eqName, null, null, true)) {
                     debug('Leveling equipment ' + eqName, "equips", '*upload3');
                     buyEquipment(eqName, null, true);
