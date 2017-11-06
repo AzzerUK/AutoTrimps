@@ -520,7 +520,7 @@ function autoMap() {
         if (selectedMap == "world") {
             //if preSpireFarming x minutes is true, switch over from wood maps to metal maps.
             if (preSpireFarming) {
-                var spiremaplvl = (game.talents.mapLoot.purchased && MODULES["automaps"].SpireFarm199Maps) ? 199 : 200;
+                var spiremaplvl = (game.talents.mapLoot.purchased && MODULES["automaps"].SpireFarm199Maps) ? (game.global.world - 1) : game.global.world;
                 if (game.global.mapsOwnedArray[highestMap].level >= spiremaplvl && game.global.mapsOwnedArray[highestMap].location == ((customVars.preferGardens && game.global.decayDone) ? 'Plentiful' : 'Mountain'))
                     selectedMap = game.global.mapsOwnedArray[highestMap].id;
                 else
@@ -654,7 +654,7 @@ function autoMap() {
             biomeAdvMapsSelect.value = useGardens ? "Plentiful" : tier[3];
             //choose spire level 199 or 200
             if (preSpireFarming && MODULES["automaps"].SpireFarm199Maps)
-                document.getElementById("mapLevelInput").value = game.talents.mapLoot.purchased ? 199 : 200;
+                document.getElementById("mapLevelInput").value = game.talents.mapLoot.purchased ? (game.global.world - 1) : game.global.world;
             //recalculate cost.
             updateMapCost();
             //if we are "Farming" for resources, make sure it's Plentiful OR metal (and always aim for lowest difficulty)
