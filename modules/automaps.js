@@ -336,7 +336,7 @@ function autoMap() {
 
     //Dynamic Siphonology section (when necessary)
     //Lower Farming Zone = Lowers the zone used during Farming mode. Starts 10 zones below current and Finds the minimum map level you can successfully one-shot
-    var siphlvl = shouldFarmLowerZone ? game.global.world - 10 : game.global.world - game.portal.Siphonology.level;
+    var siphlvl = shouldFarmLowerZone ? game.global.world - 3 : game.global.world - game.portal.Siphonology.level;
     var maxlvl = game.talents.mapLoot.purchased ? game.global.world - 1 : game.global.world;
     if (getPageSetting('DynamicSiphonology') || shouldFarmLowerZone){
         for (siphlvl; siphlvl < maxlvl; siphlvl++) {
