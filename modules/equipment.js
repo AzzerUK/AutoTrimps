@@ -401,7 +401,7 @@ function autoLevelEquipment() {
             }
             var aalvl2 = getPageSetting('AlwaysArmorLvl2') || (spirecheck);
             // Always buy level 2, until we get beyond are tough spire stage, then buy up to minimum 20
-            var minarmour = (game.global.world >= getPageSetting('IgnoreSpiresUntil')) ? 10 : 20;
+            var minarmour = (game.global.world >= getPageSetting('IgnoreSpiresUntil')) ? 12 : 2;
             if (getPageSetting('BuyArmor') && (DaThing.Stat == 'health') && aalvl2 && game.equipment[eqName].level < minarmour){
                 if (DaThing.Equip && !Best[stat].Wall && canAffordBuilding(eqName, null, null, true)) {
                     debug('Leveling equipment ' + eqName + " (AlwaysArmorLvl2)", "equips", '*upload3');
