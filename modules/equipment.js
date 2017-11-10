@@ -199,7 +199,7 @@ function evaluateEquipmentEfficiency(equipName) {
     if (game.global.world >= getPageSetting('IgnoreSpiresUntil') && (game.global.world == 200 || game.global.world == 300 || game.global.world == 400 || game.global.world == 500 || game.global.world == 600) && game.global.spireActive) {
         iCapLevel = iCapLevel * 2;
     }
-    if (getPageSetting('CapEquip2') > 0 && gameResource.level >= getPageSetting('CapEquip2')) {
+    if (iCapLevel > 0 && gameResource.level >= iCapLevel) {
         Factor = 0;
         Wall = true;
     }
