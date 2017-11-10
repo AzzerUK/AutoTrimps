@@ -194,8 +194,9 @@ function evaluateEquipmentEfficiency(equipName) {
         Factor = 0;
         Wall = true;
     }
-    // Don't go above our main equipment cap
-    if (getPageSetting('CapEquip2') > 0 && gameResource.level >= getPageSetting('CapEquip2')) {
+    // Don't go above our main equipment cap OR double equipment cap for spires
+    var bThisIsValidSpire = game.global.world >= getPageSetting('IgnoreSpiresUntil') && (game.global.world == 200 || game.global.world == 300 || game.global.world == 400 || game.global.world == 500 || game.global.world == 600) && game.global.spireActive;
+    if (getPageSetting('CapEquip2') > 0 && ((gameResource.level >= getPageSetting('CapEquip2') && !bThisIsValidSpire) || (gameResource.level >= (getPageSetting('CapEquip2') * 2) && bThisIsValidSpire)) {
         Factor = 0;
         Wall = true;
     }
