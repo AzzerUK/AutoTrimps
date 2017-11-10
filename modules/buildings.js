@@ -227,11 +227,13 @@ function buyBuildings() {
     }
     //Nurseries:
     var targetBreed = parseInt(getPageSetting('GeneticistTimer'));
+    var bThisIsValidSpire = game.global.world >= getPageSetting('IgnoreSpiresUntil') && (game.global.world == 200 || game.global.world == 300 || game.global.world == 400 || game.global.world == 500 || game.global.world == 600) && game.global.spireActive;
+    
     //NoNurseriesUntil', 'No Nurseries Until z', 'For Magma z230+ purposes. Nurseries get shut down, and wasting nurseries early on is probably a bad idea. Might want to set this to 230+ as well.'
     var nursminlvl = getPageSetting('NoNurseriesUntil');
     var preSpireOverride = getPageSetting('PreSpireNurseries');
     var noOverride = preSpireOverride < 0 || game.global.world > 200;
-    if (game.global.world < nursminlvl && noOverride) {
+    if (!bThisIsValidSpire && game.global.world < nursminlvl && noOverride) {
         postBuy2(oldBuy);
         return;
     }
