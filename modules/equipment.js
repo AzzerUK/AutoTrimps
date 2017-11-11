@@ -196,12 +196,12 @@ function evaluateEquipmentEfficiency(equipName) {
     }
     // Don't go above our main equipment cap OR double equipment cap for spires
     var iCapLevel = getPageSetting('CapEquip2');
-    debug('World: ' + game.global.world + ' IgnoreSpires: ' + getPageSetting('IgnoreSpiresUntil') + ' spire active: ' + game.global.spireActive);
+    debug('World: ' + game.global.world + ' IgnoreSpires: ' + getPageSetting('IgnoreSpiresUntil') + ' spire active: ' + game.global.spireActive + ', level cap: ' + iCapLevel);
     if (game.global.world >= getPageSetting('IgnoreSpiresUntil') && (game.global.world == 200 || game.global.world == 300 || game.global.world == 400 || game.global.world == 500 || game.global.world == 600) && game.global.spireActive) {
         iCapLevel *= 2;
-        debug('Doubling cap level!?');
+        debug('Doubling cap level to: ' + iCapLevel);
     }
-    debug('CapLevel: ' + iCapLevel + ' ThisLevel: ' + gameResource.level);
+    debug('CapLevel now at: ' + iCapLevel + ' ThisLevel: ' + gameResource.level);
     if (iCapLevel > 0 && gameResource.level >= iCapLevel) {
         Factor = 0;
         Wall = true;
